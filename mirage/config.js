@@ -11,4 +11,6 @@ export default function() {
 
     return new Mirage.Response(401, {}, {message: 'invalid'});
   });
+
+  this.get('/pizzas');
 }
