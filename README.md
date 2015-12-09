@@ -1,5 +1,7 @@
 # Pizza-planet
 
+ITS TESTED!!! ![https://travis-ci.org/TIY-LR-FEE-2015-Fall/week-08-pizza-planet.svg](TRAVIS CI)
+
 Create a home page for Pizza Planet, the finest pizza in the galaxy. Guests will want to see the available pizzas and awesome arcade games. Employees will want to log in to a back of house dashboard and manage both pizzas and arcade games.
 
 ## Prerequisites
