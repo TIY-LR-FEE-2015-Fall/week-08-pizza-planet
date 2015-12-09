@@ -13,7 +13,7 @@ test('visting the home page shows some pizzas', function(assert) {
 
     assert.equal(pizzas.length, 6, 'There should be 6 pizzas here dog.');
     assert.equal(pizzas.first().html(), 'Pepperoni', 'The first pizza should be Pepperoni');
-    assert.ok(pizzas.first().html().includes('Pepperoni'), 'The first pizza should be Pepperoni');
+    assert.ok(pizzas.first().html().indexOf('Pepperoni') !== -1, 'The first pizza should be Pepperoni');
   });
 });
 
