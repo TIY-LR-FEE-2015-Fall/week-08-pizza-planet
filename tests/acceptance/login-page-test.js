@@ -14,3 +14,15 @@ test('User can login with proper credentials', function(assert) {
     assert.equal(currentURL(), '/admin');
   });
 });
+
+test('User cannot login with invalid credentials', function(assert) {
+  visit('/login');
+
+  fillIn('.login-input--username', 'ryan@google.com');
+  fillIn('.login-input--password', 'fail');
+  click('.login-submit');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/login');
+  });
+});
