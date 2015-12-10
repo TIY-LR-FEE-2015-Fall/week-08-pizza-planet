@@ -13,4 +13,5 @@ export default function() {
   });
 
   this.get('/pizzas');
+  this.post('/pizzas');
 }

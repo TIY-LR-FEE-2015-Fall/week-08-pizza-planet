@@ -11,8 +11,8 @@
   <tbody>
     {{#each model as |pizza|}}
       <tr class="pizza-table__row">
-        <td>1</td>
-        <td>Pepperoni</td>
+        <td>{{ pizza.id }}</td>
+        <td>{{ pizza.name }}</td>
         <td>Edit</td>
       </tr>
     {{/each}}
