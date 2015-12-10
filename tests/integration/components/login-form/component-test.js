@@ -13,22 +13,28 @@ test('it renders', function(assert) {
 });
 
 test('it captures user input', function(assert) {
+  // Arrange
+  var input = {username: 'username', password: 'pass'};
   this.render(hbs`{{login-form onsubmit='handleSubmit'}}`);
 
   // Register listener for `handleSubmit`
-  this.on('handleSubmit', function(data) {
-    // Check that form sends out input on submit
-    assert.equal(data.username, 'username');
-    assert.equal(data.password, 'pass');
-  });
+  this.on('handleSubmit', assertFormValues);
 
+  // Act/Run
   // Fill in the form
-  this.$('input').eq(0).val('username');
-  this.$('input').eq(1).val('pass');
+  this.$('input').eq(0).val(input.username);
+  this.$('input').eq(1).val(input.password);
 
   // Fire change events on all inputs to fake user input
   this.$('input').change();
 
   // Fire ze missles!!!
   this.$('button').click();
+
+  // Assert
+  // This will be hoisted to the top
+  function assertFormValues(data) {
+    // Check that form sends out input on submit
+    assert.deepEqual(data, input);
+  }
 });
