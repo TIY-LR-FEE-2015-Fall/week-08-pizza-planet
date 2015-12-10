@@ -21,8 +21,8 @@ test('Admin should be able to see a table of pizzas', function(assert) {
     // Get the first `.pizza-table__row`
     var firstPizza = findWithAssert('.pizza-table__row').first();
 
-    assert.ok(firstPizza.text().includes('1'), 'The first pizza should have an id of 1');
-    assert.ok(firstPizza.text().includes('Pepperoni'), 'The first pizza should be Pepperoni');
+    assert.ok(firstPizza.text().indexOf('1') > -1, 'The first pizza should have an id of 1');
+    assert.ok(firstPizza.text().indexOf('Pepperoni') > -1, 'The first pizza should be Pepperoni');
 
     assert.equal(findWithAssert('.pizza-table__row').length, 6, 'There should be a .pizza-table__row for every item in our server');
   });
