@@ -2,24 +2,33 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('login-form', 'Integration | Component | login form', {
-  integration: true
+  integration: true,
 });
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-
   this.render(hbs`{{login-form}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$('input').length, 2, 'It should render two inputs');
+  assert.equal(this.$('button').text().trim(), 'Submit', 'It should have a submit button');
+});
 
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#login-form}}
-      template block text
-    {{/login-form}}
-  `);
+test('it captures user input', function(assert) {
+  this.render(hbs`{{login-form onsubmit='handleSubmit'}}`);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  // Register listener for `handleSubmit`
+  this.on('handleSubmit', function(data) {
+    // Check that form sends out input on submit
+    assert.equal(data.username, 'username');
+    assert.equal(data.password, 'pass');
+  });
+
+  // Fill in the form
+  this.$('input').eq(0).val('username');
+  this.$('input').eq(1).val('pass');
+
+  // Fire change events on all inputs to fake user input
+  this.$('input').change();
+
+  // Fire ze missles!!!
+  this.$('button').click();
 });
