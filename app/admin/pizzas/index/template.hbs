@@ -13,7 +13,7 @@
       <tr class="pizza-table__row">
         <td>{{ pizza.id }}</td>
         <td>{{ pizza.name }}</td>
-        <td>Edit</td>
+        <td>{{#link-to 'admin.pizzas.edit' pizza}}Edit{{/link-to}}</td>
       </tr>
     {{/each}}
   </tbody>

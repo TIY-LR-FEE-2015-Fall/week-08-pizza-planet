@@ -14,4 +14,5 @@ export default function() {
 
   this.get('/pizzas');
   this.post('/pizzas');
+  this.get('/pizzas/:id');
 }

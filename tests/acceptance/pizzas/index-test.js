@@ -40,3 +40,17 @@ test('Admin should be able to navigate to the new pizza page', function(assert) 
     assert.equal(currentURL(), '/admin/pizzas/new');
   });
 });
+
+test('Admin should be able to navigate to the edit pizza page', function(assert) {
+  // Arrange
+  server.createList('pizza', 6); // Adds 6 Pizzas to our API
+  visit('/admin/pizzas');
+
+  // Act - Click on the first .pizza-table__row edit link
+  click('.pizza-table__row:nth-of-type(1) a');
+
+  // Assert
+  andThen(function() {
+    assert.equal(currentURL(), '/admin/pizzas/1/edit');
+  });
+});

@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('admin', function() {
     this.route('pizzas', function() {
       this.route('new');
+      this.route('edit', {path: '/:pizza_id/edit'});
     });
   });
 });
