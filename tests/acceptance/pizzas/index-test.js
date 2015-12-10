@@ -30,6 +30,13 @@ test('Admin should be able to see a table of pizzas', function(assert) {
 
 test('Admin should be able to navigate to the new pizza page', function(assert) {
   // Arrange
+  visit('/admin/pizzas');
+
   // Act
+  click('.pizza-new-btn');
+
   // Assert
+  andThen(function() {
+    assert.equal(currentURL(), '/admin/pizzas/new');
+  });
 });
